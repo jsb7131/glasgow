@@ -102,7 +102,7 @@ When you submit your code:
   - A **maximum timeout of 10 seconds per test case**
   - Up to **10 concurrent workers**, controlled via a thread pool
 - **Your function must complete within 10 seconds per test case**, or it is considered invalid.
-  - The runtime that will be reported if it reaches the timeout / is considere invalid is **9999999.0**
+  - The runtime that will be reported if it reaches the timeout / is considered invalid is **9999999.0**
 
 All inputs are arrays of integers, increasing in size from:
 - `inputs_small.txt`
