@@ -15,7 +15,7 @@ A FastAPI-based backend for submitting, benchmarking, and ranking user-submitted
 ## ⚙️ Setup Instructions (macOS)
 
 ```
-git clone <repo-url>
+git clone
 cd glasgow
 python3.11 -m venv venv
 source venv/bin/activate
@@ -127,11 +127,8 @@ To ensure safety:
 - Developed in Python 3.11 using FastAPI
 - Authentication is handled with simple header-based username/password
 - Data is stored in JSON files locally
-- Development process assisted by **ChatGPT 4o**
+- Development process assisted by **ChatGPT 4o** via the web browser
 
 ---
 
 Have fun building bots and climbing the leaderboard! 🏆
-
-
-Development process assisted by ChatGPT 4o in the web browser.
