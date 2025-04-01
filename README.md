@@ -15,7 +15,7 @@ A FastAPI-based backend for submitting, benchmarking, and ranking user-submitted
 ## ⚙️ Setup Instructions (macOS)
 
 ```
-git clone
+git clone https://github.com/jsb7131/glasgow.git
 cd glasgow
 python3.11 -m venv venv
 source venv/bin/activate
