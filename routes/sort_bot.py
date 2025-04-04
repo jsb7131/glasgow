@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from routes.base.security import validate_user
-from utils.code_runner import validate_code, run_all_benchmarks
+from utils.code_runner import validate_code, sanitize_runtime, run_code
 from utils.leaderboard import generate_leaderboard
 
 router = APIRouter()
@@ -60,7 +60,7 @@ def submit_bot(
                     content={"detail": "You already have a bot with that name."}
                 )
             
-        avg_small, avg_medium, avg_large = run_all_benchmarks(submission.code)
+        avg_small, avg_medium, avg_large = run_code(submission.code)
         
         bot_id = str(uuid.uuid4())
         bots[bot_id] = {
@@ -68,9 +68,9 @@ def submit_bot(
             "bot_name": bot_name,
             "bot_description": bot_description,
             "bot_code": submission.code,
-            "avg_small_input_runtime": avg_small,
-            "avg_medium_input_runtime": avg_medium,
-            "avg_large_input_runtime": avg_large
+            "avg_small_input_runtime": sanitize_runtime(avg_small),
+            "avg_medium_input_runtime": sanitize_runtime(avg_medium),
+            "avg_large_input_runtime": sanitize_runtime(avg_large)
         }
 
         with open(SORT_BOTS_FILE, "w") as f:
