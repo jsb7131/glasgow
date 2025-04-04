@@ -1,6 +1,6 @@
 ## 🐳 Feature branch: Running the Isolated VM + Docker Code Runner (Colima + Docker-Run)
 
-This feature enables isolated benchmarking by spawning a Docker container, inside a lightweight Linux VM (via Colima), in which to run all test case with untrusted code, and then removing the container.
+This feature enables isolated benchmarking by spawning a Docker container, inside a lightweight Linux VM (via Colima), in which to run all test cases with untrusted code, and then removing the container.
 
 https://github.com/abiosoft/colima
 
