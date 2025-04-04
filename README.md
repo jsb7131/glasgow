@@ -49,6 +49,25 @@ The `docker-run` container will be available at:
 http://localhost:8088
 ```
 
+Hit the submit-and-run-bot FastAPI endpoint as before:
+
+**POST** `http://127.0.0.1:8000/api/v1/submit-and-run-bot`
+
+#### Headers:
+```
+username: <your username>
+password: <your password>
+bot-name: <bot name>
+bot-description: <bot description>
+```
+
+#### Body:
+```json
+{
+  "code": "def sort_array(arr):\n arr.sort()\n return arr"
+}
+```
+
 ---
 
 ### 🧠 Why This Setup?
@@ -88,7 +107,7 @@ http://localhost:8088
 
 ---
 
-### 🧪 Manual Test
+### 🧪 Manual Test for the VM / Docker
 
 Want to verify your setup after running bash colima_runner.sh start?
 
