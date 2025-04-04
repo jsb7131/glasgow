@@ -62,7 +62,7 @@ http://localhost:8088
 
 ### ⏳ Timeout Considerations
 
-- The default `docker-run` container from the public registry enforces a **30 second max execution time**. So long-running sort algorithms **may timeout** before they finish. However, replacing `docker-run` with a manual implementation of an ephemeral code-runner Docker would remove this limitation.
+- The default `docker-run` container from the public registry enforces a **30 second max execution time**. So, long-running sort algorithms **will timeout** before they finish. However, replacing `docker-run` with a manual implementation of an ephemeral, code-runner Docker container would remove this limitation.
 - The timeout now applies to **the full submission**, not each individual test case.
 
 > ⛓️ **Tradeoff**: You lose fine-grained control over each test's timeout, but you gain simpler, safer execution.
