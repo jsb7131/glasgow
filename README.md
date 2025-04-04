@@ -1,6 +1,6 @@
 ## 🐳 Feature branch: Running the Isolated VM + Docker Code Runner (Colima + Docker-Run)
 
-This feature enables isolated benchmarking by spawning a Docker container, inside a lightweight Linux VM (via Colima), in which to run all test case with untrusted code.
+This feature enables isolated benchmarking by spawning a Docker container, inside a lightweight Linux VM (via Colima), in which to run all test case with untrusted code, and then removing the container.
 
 https://github.com/abiosoft/colima
 
@@ -75,7 +75,7 @@ bot-description: <bot description>
 ### 🧠 Why This Setup?
 
 - The Docker container benchmarks **all 57 inputs in parallel** via an internal thread pool, inside the VM.
-- Although it's possible to escape the Docker and a VM / exploit kernel vulnerabilities, you would ideally run any other system component on a separate machine altogether than the one that is running this VM -> and the attack vector would become enormously convoluted, greatly lowering the risk of an exploit.
+- Although it's possible to escape the Docker and a VM / exploit kernel vulnerabilities, you would ideally run any other system component on a separate machine altogether than the one that is running this VM -> and the attack vector would become very convoluted, greatly lowering the risk of an exploit.
 - If a submission crashes, runs too long, or errors out, it happens in a single place and could get reported in a monitoring system immediately.
 - Note: There is another technology out there called 'gVisor' that could be used in conjunction with this for even more security (https://gvisor.dev)
 
