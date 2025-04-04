@@ -14,7 +14,7 @@ You're now running **isolated and parallelized Python code**...
 
 ...**from a FastAPI app on macOS**...
 
-...**via a Docker-run container inside an amd64 VM spun up by Colima on an ARM-based MacBook**. 🤯
+...**via a Docker-run container inside an amd64 VM spun up by Colima on an ARM-based MacBook**.
 
 ---
 
