@@ -49,7 +49,9 @@ The `docker-run` container will be available at:
 http://localhost:8088
 ```
 
-Hit the submit-and-run-bot FastAPI endpoint as before:
+---
+
+### ✅ Hit the submit-and-run-bot FastAPI endpoint as before:
 
 **POST** `http://127.0.0.1:8000/api/v1/submit-and-run-bot`
 
@@ -134,7 +136,7 @@ If it returns `[1, 2, 3]`, you're golden 🌟
 
 ---
 
-### ✅ Summary
+### Summary
 
 - ✅ Runs all test cases securely in a single container
 - ✅ Uses a Docker container inside a VM to isolate user code
