@@ -24,8 +24,8 @@ You're now running **isolated and parallelized Python code**...
 
 ```bash
 git clone https://github.com/jsb7131/glasgow.git
-git checkout colima/docker-run
 cd glasgow
+git checkout colima/docker-run
 
 # Install Colima + virtualization backend
 brew install colima
