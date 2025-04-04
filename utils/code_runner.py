@@ -1,6 +1,5 @@
-import time
-import textwrap
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from utils.docker_runner import run_code_in_docker
 
 SAFE_BUILTINS = {
     "sorted": sorted,
@@ -15,43 +14,12 @@ INPUT_FILES = {
     "large": "data/inputs_large.txt"
 }
 
-def worker(code_str, arr, return_dict):
-    try:
-        start = time.time()
-        ns = {"__builtins__": SAFE_BUILTINS}
-        exec(textwrap.dedent(code_str), ns, ns)
-        if "sort_array" not in ns or not callable(ns["sort_array"]):
-            return_dict["time"] = float("inf")
-        else:
-            sorted_arr = ns["sort_array"](arr.copy())  # call the user-defined function
-        end = time.time()
-
-        # validate sorted_arr is actually sorted
-        if sorted_arr != sorted(arr):
-            return_dict["time"] = float("inf")  # failed to sort correctly
-        else:
-            return_dict["time"] = round(end - start, 6)
-    except Exception as e:
-        print("Exception:", str(e))
-        return_dict["time"] = float("inf")
-
 def validate_code(code: str) -> bool:
     banned = ['import os', 'import sys', 'open(', 'eval(', 'exec(', '__', 'subprocess']
     return not any(b in code for b in banned)
 
-def run_code_snippet(code: str, arr: list, timeout: float = 10.0) -> float:
-    import multiprocessing as mp
-
-    manager = mp.Manager()
-    return_dict = manager.dict()
-    p = mp.Process(target=worker, args=(code, arr, return_dict))
-    p.start()
-    p.join(timeout)
-
-    if p.is_alive():
-        p.terminate()
-        return float("inf")
-    return return_dict.get("time", float("inf"))
+def run_code_snippet(code: str, arr: list, timeout: int = 10) -> float:
+    return run_code_in_docker(code, arr, timeout)
 
 def sanitize_runtime(value: float) -> float:
     # also checks for NaN
